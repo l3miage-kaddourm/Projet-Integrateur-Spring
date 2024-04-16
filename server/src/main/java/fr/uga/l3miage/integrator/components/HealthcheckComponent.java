@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 public class HealthcheckComponent {
     private final HealthcheckRepository healthcheckRepository;
 
-
     public void checkHealthDataBase() throws DataBaseHealthCheckException {
         HealthcheckEntity entity = HealthcheckEntity.builder().id(1L).build();
         healthcheckRepository.save(entity);
