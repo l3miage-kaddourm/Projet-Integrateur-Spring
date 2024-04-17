@@ -23,12 +23,10 @@ public class JourneeEntity {
 
     private Date date;
 
-    @Column(name = "distance_a_parcourir")
     private Double distanceAParcourir;
 
     private Double montant;
 
-    @Column(name = "tdp_theorique")
     private Integer tdmTheorique;
 
     @OneToMany(mappedBy = "journee")

@@ -23,16 +23,12 @@ public class TourneeEntity {
 
     private Double montant;
 
-    @Column(name = "tdp_theorique")
     private Integer tdmTheorique;
 
-    @Column(name = "tdm_effective")
     private Integer tdmEffective;
 
-    @Column(name = "distance_a_parcourir")
     private Double distanceAparcourir;
 
-    @Column(name = "distance_de_retour")
     private Double distanceDeRetour;
 
     @OneToMany(mappedBy = "tournee")
@@ -40,6 +36,9 @@ public class TourneeEntity {
 
     @ManyToOne
     private JourneeEntity journee;
+
+    @ManyToMany(mappedBy = "tournees")
+    private Set<EmployeEntity> employes;
 
 
     @PrePersist

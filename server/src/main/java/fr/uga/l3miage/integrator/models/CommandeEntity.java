@@ -21,7 +21,6 @@ public class CommandeEntity {
     @Enumerated(EnumType.STRING)
     private EtatsDeCommande etat;
 
-    @Column(name = "date_de_validation")
     private LocalDateTime dateDeValidation;
 
     @Enumerated(EnumType.ORDINAL)
@@ -32,16 +31,12 @@ public class CommandeEntity {
 
     private double montant;
 
-    @Column(name = "tdp_theorique")
     private Integer tddTheorique;
 
-    @Column(name = "tdm_theorique")
     private Integer tdmTheorique;
 
-    @Column(name = "date_de_livraison")
     private LocalDateTime dateDeLivraisonEffective;
 
-    @Column(name = "duree_de_livraison")
     private Integer dureeDeLivraison;
 
     @ManyToOne

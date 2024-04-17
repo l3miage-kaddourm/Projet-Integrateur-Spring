@@ -24,25 +24,18 @@ public class LivraisonEntity {
 
     private Double montant;
 
-    @Column(name = "distance_a_parcourir")
     private Double distanceAparcourir;
 
-    @Column(name = "tdp_al_aller")
     private Integer tdpAlAller;
 
-    @Column(name = "tdp_theorique")
     private Integer tdpTheorique;
 
-    @Column(name = "tdm_theorique")
     private Integer tdmTheorique;
 
-    @Column(name = "heure_de_livraison")
     private Time heureDeLivraison;
 
-    @Column(name = "heure_de_livraison_effective")
     private LocalDateTime heureDeLivraisonEffective;
 
-    @Column(name = "tdm_effectif")
     private Integer tdmEffectif;
 
     @OneToMany(mappedBy = "livraison")
