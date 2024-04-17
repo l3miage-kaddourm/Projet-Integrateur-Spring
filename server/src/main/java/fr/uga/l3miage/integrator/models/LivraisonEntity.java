@@ -44,19 +44,6 @@ public class LivraisonEntity {
     @ManyToOne
     private TourneeEntity tournee;
 
-    @PrePersist
-    @PreUpdate
-    public void calculerAttributs() {
-        if (commandes != null) {
-            this.montant = commandes.stream()
-                    .mapToDouble(CommandeEntity::getMontant)
-                    .sum();
-            this.tdmTheorique = commandes.stream()
-                    .mapToInt(CommandeEntity::getTdmTheorique)
-                    .sum();
-        }
-    }
 
-    //TODO:calculerheureDeLivraison() , claculerreferece()
 
 }

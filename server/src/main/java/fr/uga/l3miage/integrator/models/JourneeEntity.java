@@ -32,20 +32,8 @@ public class JourneeEntity {
     @OneToMany(mappedBy = "journee")
     private Set<TourneeEntity> tournees;
 
-    @PrePersist
-    @PreUpdate
-    public void calculerAttributs() {
-        if (tournees != null) {
-            this.montant = tournees.stream()
-                    .mapToDouble(TourneeEntity::getMontant)
-                    .sum();
-            this.tdmTheorique = tournees.stream()
-                    .mapToInt(TourneeEntity::getTdmTheorique)
-                    .sum();
-            this.distanceAParcourir = tournees.stream()
-                    .mapToDouble(TourneeEntity::getDistanceAparcourir)
-                    .sum();
-            //TODO: calculer reference
-        }
-    }
+    @ManyToOne
+    private EntrepotEntity entrepot;
+
+
 }

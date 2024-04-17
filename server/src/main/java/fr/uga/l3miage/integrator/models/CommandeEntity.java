@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Setter
@@ -41,5 +42,9 @@ public class CommandeEntity {
 
     @ManyToOne
     private LivraisonEntity livraison;
+
+
+    @OneToMany(mappedBy = "commande")
+    private Set<LigneEntity> lignesProduits;
 
 }

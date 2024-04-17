@@ -1,8 +1,9 @@
 package fr.uga.l3miage.integrator.models;
 
 
+import fr.uga.l3miage.integrator.DataType.Adresse;
+import fr.uga.l3miage.integrator.DataType.GeoPosition;
 import fr.uga.l3miage.integrator.enums.EtatsDeClient;
-import fr.uga.l3miage.integrator.enums.EtatsDeLivraison;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;

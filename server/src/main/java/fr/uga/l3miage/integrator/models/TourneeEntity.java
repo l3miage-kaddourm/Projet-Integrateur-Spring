@@ -40,24 +40,10 @@ public class TourneeEntity {
     @ManyToMany(mappedBy = "tournees")
     private Set<EmployeEntity> employes;
 
+    @ManyToOne
+    private CamionEntity camion;
 
-    @PrePersist
-    @PreUpdate
-    public void calculerAttributs() {
-        if (livraisons != null) {
-            this.montant = livraisons.stream()
-                    .mapToDouble(LivraisonEntity::getMontant)
-                    .sum();
-            this.tdmTheorique = livraisons.stream()
-                    .mapToInt(LivraisonEntity::getTdmTheorique)
-                    .sum();
-            this.tdmEffective= livraisons.stream()
-                    .mapToInt(LivraisonEntity::getTdmEffectif)
-                    .sum();
-            this.distanceAparcourir= livraisons.stream()
-                    .mapToDouble(LivraisonEntity::getDistanceAparcourir)
-                    .sum();
-            //TODO : calculer distance de retour
-        }
-    }
+
+
+
 }
