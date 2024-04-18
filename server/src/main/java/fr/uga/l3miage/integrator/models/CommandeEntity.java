@@ -47,4 +47,10 @@ public class CommandeEntity {
     @OneToMany(mappedBy = "commande")
     private Set<LigneEntity> lignesProduits;
 
+    @ManyToOne
+    private ClientEntity client;
+
+    @ManyToMany
+    private Set<ProduitEntity> produits;
+
 }

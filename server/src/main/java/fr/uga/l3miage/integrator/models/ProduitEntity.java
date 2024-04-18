@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Optional;
 import java.util.Set;
 
 @Entity
@@ -39,8 +38,12 @@ public class ProduitEntity {
 
 
     @ManyToOne
-    private Catalogue catalogue;
+    private CatalogueEntity catalogue;
 
     @ManyToMany
     private Set<EntrepotEntity> entrepots;
+
+
+    @ManyToMany(mappedBy = "produits")
+    private Set<CommandeEntity> commandes;
 }

@@ -7,7 +7,7 @@ import javax.persistence.OneToMany;
 import java.util.Set;
 
 @Entity
-public class Catalogue {
+public class CatalogueEntity {
 
 
     @Id
