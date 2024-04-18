@@ -31,4 +31,7 @@ public class EmployeEntity {
 
     @ManyToMany
     private Set<TourneeEntity> tournees;
+
+    @OneToOne
+    private EntrepotEntity entrepot;
 }
