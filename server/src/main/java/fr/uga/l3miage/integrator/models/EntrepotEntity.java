@@ -28,8 +28,8 @@ public class EntrepotEntity {
     @OneToMany(mappedBy = "entrepot")
     private Set<JourneeEntity> journees;
 
-    @OneToOne(mappedBy = "entrepot")
-    private EmployeEntity employe;
+//    @OneToOne(mappedBy = "entrepot")
+//    private EmployeEntity employe;
 
     @ManyToMany(mappedBy = "entrepots")
     private Set<ProduitEntity> produits;

@@ -13,7 +13,7 @@ public interface EmployeRepository extends JpaRepository<EmployeEntity, String> 
 
         Set<EmployeEntity> findAllByEmploi(Emploi emploi);
         EmployeEntity findByTrigramme(String trigramme);
-        Set<EmployeEntity> findAllByTournees_Reference(String reference);
+//        Set<EmployeEntity> findAllByTournees_Reference(String reference);
 
 }
 

@@ -29,9 +29,9 @@ public class EmployeEntity {
     @Enumerated(EnumType.STRING)
     private Emploi emploi;
 
-    @ManyToMany
-    private Set<TourneeEntity> tournees;
-
-    @OneToOne
-    private EntrepotEntity entrepot;
+//    @ManyToMany
+//    private Set<TourneeEntity> tournees;
+//
+//    @OneToOne
+//    private EntrepotEntity entrepot;
 }
