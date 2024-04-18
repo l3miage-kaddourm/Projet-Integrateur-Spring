@@ -18,11 +18,11 @@ public class EmployeEntity {
 
     private String email;
 
-    private String nom;
-
     private String prenom;
 
-    private String img;
+    private String nom;
+
+    private String photo;
 
     private String telephone;
 

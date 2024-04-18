@@ -6,6 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-interface TourneRepository extends JpaRepository<TourneeEntity, String> {
-
+public interface TourneeRepository extends JpaRepository<TourneeEntity, String> {
 }
