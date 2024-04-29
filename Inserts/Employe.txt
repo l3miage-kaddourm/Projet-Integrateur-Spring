@@ -1,0 +1,29 @@
+INSERT INTO employe_entity (trigramme, email, prenom, nom, photo, telephone, emploi)
+VALUES ('TRI1', 'example1@email.com', 'John1', 'Doe1', 'photo1.jpg', '1234567890', 'livreur');
+
+INSERT INTO employe_entity (trigramme, email, prenom, nom, photo, telephone, emploi)
+VALUES ('TRI2', 'example2@email.com', 'John2', 'Doe2', 'photo2.jpg', '0987654321', 'planificateur');
+
+INSERT INTO employe_entity (trigramme, email, prenom, nom, photo, telephone, emploi)
+VALUES ('TRI3', 'example3@email.com', 'John3', 'Doe3', 'photo3.jpg', '1122334455', 'livreur');
+
+INSERT INTO employe_entity (trigramme, email, prenom, nom, photo, telephone, emploi)
+VALUES ('TRI4', 'example4@email.com', 'John4', 'Doe4', 'photo4.jpg', '5566778899', 'planificateur');
+
+INSERT INTO employe_entity (trigramme, email, prenom, nom, photo, telephone, emploi)
+VALUES ('TRI5', 'example5@email.com', 'John5', 'Doe5', 'photo5.jpg', '2233445566', 'livreur');
+
+INSERT INTO employe_entity (trigramme, email, prenom, nom, photo, telephone, emploi)
+VALUES ('TRI6', 'example6@email.com', 'John6', 'Doe6', 'photo6.jpg', '3344556677', 'livreur');
+
+INSERT INTO employe_entity (trigramme, email, prenom, nom, photo, telephone, emploi)
+VALUES ('TRI7', 'example7@email.com', 'John7', 'Doe7', 'photo7.jpg', '7788990011', 'planificateur');
+
+INSERT INTO employe_entity (trigramme, email, prenom, nom, photo, telephone, emploi)
+VALUES ('TRI8', 'example8@email.com', 'John8', 'Doe8', 'photo8.jpg', '9911223344', 'livreur');
+
+INSERT INTO employe_entity (trigramme, email, prenom, nom, photo, telephone, emploi)
+VALUES ('TRI9', 'example9@email.com', 'John9', 'Doe9', 'photo9.jpg', '5566778899', 'planificateur');
+
+INSERT INTO employe_entity (trigramme, email, prenom, nom, photo, telephone, emploi)
+VALUES ('TRI10', 'example10@email.com', 'John10', 'Doe10', 'photo10.jpg', '2233445566', 'livreur');
