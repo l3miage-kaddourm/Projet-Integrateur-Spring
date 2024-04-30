@@ -2,15 +2,17 @@ package fr.uga.l3miage.integrator.models;
 
 
 import fr.uga.l3miage.integrator.enums.Emploi;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
-import java.util.Set;
+
 
 @Entity
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class EmployeEntity {
 
     @Id

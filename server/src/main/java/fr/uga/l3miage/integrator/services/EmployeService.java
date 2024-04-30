@@ -1,22 +1,40 @@
 package fr.uga.l3miage.integrator.services;
 
+import com.opencsv.bean.CsvToBean;
+import com.opencsv.bean.CsvToBeanBuilder;
+import com.opencsv.bean.HeaderColumnNameMappingStrategy;
 import fr.uga.l3miage.integrator.components.EmployeComponent;
+import fr.uga.l3miage.integrator.enums.Emploi;
+import fr.uga.l3miage.integrator.exceptions.rest.CsvImportRestException;
+import fr.uga.l3miage.integrator.exceptions.rest.NotFoundLivreursRestException;
+import fr.uga.l3miage.integrator.exceptions.technical.NotFoundLivreursException;
 import fr.uga.l3miage.integrator.models.EmployeEntity;
+import fr.uga.l3miage.integrator.repositories.EmployeRepository;
 import fr.uga.l3miage.integrator.responses.EmployeResponseDTO;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 
 @Service
+@RequiredArgsConstructor
 public class EmployeService {
 
-
-    private final EmployeComponent employeComponent;
-
     @Autowired
-    public EmployeService(EmployeComponent employeComponent) {
-        this.employeComponent = employeComponent;
-    }
+    private final EmployeComponent employeComponent;
+    private final EmployeRepository employeRepository;
+
+
     public EmployeResponseDTO convertToDTO(EmployeEntity employeEntity) {
         EmployeResponseDTO employeResponseDTO = new EmployeResponseDTO();
         employeResponseDTO.setTrigramme(employeEntity.getTrigramme());
@@ -28,4 +46,48 @@ public class EmployeService {
         employeResponseDTO.setEmploi(employeEntity.getEmploi());
         return employeResponseDTO;
     }
+
+    public Set<EmployeResponseDTO> getLivreurs() {
+        try {
+            return employeComponent.finAllLivreurs().stream().map(this::convertToDTO).collect(Collectors.toSet());
+        } catch (NotFoundLivreursException e) {
+            throw new NotFoundLivreursRestException(e.getMessage(), NotFoundLivreursRestException.Type.NOTFOUND);
+        }
+    }
+
+    public void importCsvSecond() throws IOException{
+            Set<EmployeEntity> employes = parseCsv();
+            employeRepository.saveAll(employes);
+
+    }
+    public Set<EmployeEntity> parseCsv() throws IOException{
+        try(Reader reader = new BufferedReader(new FileReader("C:\\Users\\kanikisenci\\Desktop\\miage\\Projet_Integrateur\\Spring\\server\\src\\main\\java\\fr\\uga\\l3miage\\integrator\\data\\Employes.csv"))){
+            HeaderColumnNameMappingStrategy<EmployeResponseDTO> strategy = new HeaderColumnNameMappingStrategy<>();
+            strategy.setType(EmployeResponseDTO.class);
+            CsvToBean<EmployeResponseDTO> csvToBean =
+                    new CsvToBeanBuilder<EmployeResponseDTO>(reader)
+                    .withMappingStrategy(strategy)
+                    .withIgnoreLeadingWhiteSpace(true)
+                    .withIgnoreLeadingWhiteSpace(true)
+                    .build();
+           return csvToBean.parse()
+                    .stream()
+                    .map(csvLine  -> EmployeEntity.builder()
+                            .trigramme(csvLine.getTrigramme())
+                            .email(csvLine.getEmail())
+                            .prenom(csvLine.getPrenom())
+                            .nom(csvLine.getNom())
+                            .photo(csvLine.getPhoto())
+                            .telephone(csvLine.getTelephone())
+                            .emploi(csvLine.getEmploi())
+                            .build()
+                    )
+                    .collect(Collectors.toSet());
+        }
+        catch (IOException e){
+            throw new CsvImportRestException("Erreur lors de l'importation des employés", e);
+        }
+
+    }
 }
+

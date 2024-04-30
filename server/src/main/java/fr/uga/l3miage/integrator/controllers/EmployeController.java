@@ -1,25 +1,41 @@
 package fr.uga.l3miage.integrator.controllers;
 
-import fr.uga.l3miage.integrator.components.EmployeComponent;
 import fr.uga.l3miage.integrator.endpoints.EmployeEndPoints;
+import fr.uga.l3miage.integrator.exceptions.rest.NotFoundLivreursRestException;
 import fr.uga.l3miage.integrator.responses.EmployeResponseDTO;
 import fr.uga.l3miage.integrator.services.EmployeService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+
+import javax.annotation.PostConstruct;
+import java.io.IOException;
+import java.util.Collections;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
 public class EmployeController implements EmployeEndPoints {
 
-    private final EmployeComponent employeComponent;
+
+    @Autowired
     private final EmployeService employeService;
 
     public Set<EmployeResponseDTO> getAllLivreurs() {
-        return employeComponent.finAllLivreurs().stream()
-                .map(employeService::convertToDTO)
-                .collect(Collectors.toSet());
+        try {
+            return employeService.getLivreurs();
+        } catch (NotFoundLivreursRestException e) {
+            return Collections.emptySet();
+        }
+    }
+
+    @PostConstruct
+    public void importCsvSecond() {
+        try {
+            employeService.importCsvSecond();
+        } catch (IOException e) {
+            System.err.println("Failed to import employees from CSV: " + e.getMessage());
+        }
     }
 }
