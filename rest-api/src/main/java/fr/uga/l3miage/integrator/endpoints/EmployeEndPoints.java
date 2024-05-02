@@ -25,7 +25,6 @@ public interface EmployeEndPoints {
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping("/livreurs")
     Set<EmployeResponseDTO> getAllLivreurs();
-
 //    @Operation(description = "Importer les employés depuis un fichier CSV")
 //    @ApiResponse(responseCode = "400",description = "Les employés ont été importés avec succès",
 //            content = @Content(schema = @Schema(implementation = IOException.class)))
