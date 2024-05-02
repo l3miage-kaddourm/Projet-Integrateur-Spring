@@ -25,14 +25,13 @@ public class EntrepotEntity {
     @OneToMany(mappedBy = "entrepot")
     private Set<CamionEntity> camions;
 
+//    @OneToMany(mappedBy = "entrepot")
+//    private Set<JourneeEntity> journees;
+
     @OneToMany(mappedBy = "entrepot")
-    private Set<JourneeEntity> journees;
+    private Set< EmployeEntity> employes;
 
-//    @OneToOne(mappedBy = "entrepot")
-//    private EmployeEntity employe;
-
-    @ManyToMany(mappedBy = "entrepots")
-    private Set<ProduitEntity> produits;
-
+//    @ManyToMany(mappedBy = "entrepots")
+//    private Set<ProduitEntity> produits;
 
 }
