@@ -40,17 +40,17 @@ public class CommandeEntity {
 
     private Integer dureeDeLivraison;
 
-    @ManyToOne
-    private LivraisonEntity livraison;
+//    @ManyToOne
+//    private LivraisonEntity livraison;
 
 
-    @OneToMany(mappedBy = "commande")
-    private Set<LigneEntity> lignesProduits;
+//    @OneToMany(mappedBy = "commande")
+//    private Set<LigneEntity> lignesProduits;
 
-    @ManyToOne
-    private ClientEntity client;
+//    @ManyToOne
+//    private ClientEntity client;
 
-    @ManyToMany
-    private Set<ProduitEntity> produits;
+//    @ManyToMany
+//    private Set<ProduitEntity> produits;
 
 }

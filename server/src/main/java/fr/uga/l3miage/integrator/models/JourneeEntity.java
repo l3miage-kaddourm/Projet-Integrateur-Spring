@@ -29,11 +29,11 @@ public class JourneeEntity {
 
     private Integer tdmTheorique;
 
-    @OneToMany(mappedBy = "journee")
-    private Set<TourneeEntity> tournees;
-
-    @ManyToOne
-    private EntrepotEntity entrepot;
+//    @OneToMany(mappedBy = "journee")
+//    private Set<TourneeEntity> tournees;
+//
+//    @ManyToOne
+//    private EntrepotEntity entrepot;
 
 
 }

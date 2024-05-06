@@ -6,6 +6,7 @@ import fr.uga.l3miage.integrator.responses.EmployeResponseDTO;
 import fr.uga.l3miage.integrator.services.EmployeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Controller;
 
 
@@ -16,6 +17,7 @@ import java.util.Set;
 
 @Controller
 @RequiredArgsConstructor
+@DependsOn("entrepotController")
 public class EmployeController implements EmployeEndPoints {
 
 
@@ -31,9 +33,9 @@ public class EmployeController implements EmployeEndPoints {
     }
 
     @PostConstruct
-    public void importCsvSecond() {
+    public void importCsv() {
         try {
-            employeService.importCsvSecond();
+            employeService.importCsv();
         } catch (IOException e) {
             System.err.println("Failed to import employees from CSV: " + e.getMessage());
         }

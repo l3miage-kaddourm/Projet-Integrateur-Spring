@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Set;
+
 
 @Entity
 @Getter
@@ -33,17 +33,17 @@ public class ProduitEntity {
     private Encoubrement encoubrement;
 
 
-    @OneToMany(mappedBy = "produit")
-    private Set<LigneEntity> lignesCommandes;
-
-
-    @ManyToOne
-    private CatalogueEntity catalogue;
-
-    @ManyToMany
-    private Set<EntrepotEntity> entrepots;
-
-
-    @ManyToMany(mappedBy = "produits")
-    private Set<CommandeEntity> commandes;
+//    @OneToMany(mappedBy = "produit")
+//    private Set<LigneEntity> lignesCommandes;
+//
+//
+//    @ManyToOne
+//    private CatalogueEntity catalogue;
+//
+//    @ManyToMany
+//    private Set<EntrepotEntity> entrepots;
+//
+//
+//    @ManyToMany(mappedBy = "produits")
+//    private Set<CommandeEntity> commandes;
 }

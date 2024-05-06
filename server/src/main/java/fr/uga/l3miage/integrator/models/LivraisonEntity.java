@@ -38,11 +38,11 @@ public class LivraisonEntity {
 
     private Integer tdmEffectif;
 
-    @OneToMany(mappedBy = "livraison")
-    private Set<CommandeEntity> commandes;
-
-    @ManyToOne
-    private TourneeEntity tournee;
+//    @OneToMany(mappedBy = "livraison")
+//    private Set<CommandeEntity> commandes;
+//
+//    @ManyToOne
+//    private TourneeEntity tournee;
 
 
 
