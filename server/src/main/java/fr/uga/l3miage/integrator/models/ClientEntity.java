@@ -27,6 +27,6 @@ public class ClientEntity {
     private GeoPosition position;
     private EtatsDeClient etat;
 
-    @OneToMany(mappedBy = "client")
-    private Set<CommandeEntity> commandes;
+//    @OneToMany(mappedBy = "client")
+//    private Set<CommandeEntity> commandes;
 }

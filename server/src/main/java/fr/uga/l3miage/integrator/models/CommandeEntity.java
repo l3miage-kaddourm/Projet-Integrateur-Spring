@@ -40,8 +40,8 @@ public class CommandeEntity {
 
     private Integer dureeDeLivraison;
 
-    @ManyToOne
-    private LivraisonEntity livraison;
+//    @ManyToOne
+//    private LivraisonEntity livraison;
 
 
 //    @OneToMany(mappedBy = "commande")

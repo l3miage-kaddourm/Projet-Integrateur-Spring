@@ -13,7 +13,7 @@ public class CatalogueEntity {
     @Id
     private String reference;
 
-    @OneToMany(mappedBy = "catalogue")
-    private Set<ProduitEntity> produits;
+//    @OneToMany(mappedBy = "catalogue")
+//    private Set<ProduitEntity> produits;
 
 }

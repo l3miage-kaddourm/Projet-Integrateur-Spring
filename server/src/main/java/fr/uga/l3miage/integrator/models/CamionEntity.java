@@ -23,10 +23,10 @@ public class CamionEntity {
     private GeoPosition position;
 
 
-    @ManyToOne
-    private EntrepotEntity entrepot;
-
-    @OneToMany(mappedBy = "camion")
-    private Set<TourneeEntity> tournees;
+//    @ManyToOne
+//    private EntrepotEntity entrepot;
+//
+//    @OneToMany(mappedBy = "camion")
+//    private Set<TourneeEntity> tournees;
 
 }

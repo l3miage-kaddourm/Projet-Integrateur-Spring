@@ -25,15 +25,10 @@ public interface EmployeEndPoints {
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping("/livreurs")
     Set<EmployeResponseDTO> getAllLivreurs();
-//    @Operation(description = "Importer les employés depuis un fichier CSV")
-//    @ApiResponse(responseCode = "400",description = "Les employés ont été importés avec succès",
-//            content = @Content(schema = @Schema(implementation = IOException.class)))
-//    @ResponseStatus(HttpStatus.OK)
-//    @PostMapping("/import")
-//    void importEmployesFromCSV();
+
 
     @PostMapping(value = "/import",consumes ={"multipart/from-data"} )
-     void importCsvSecond( );
+     void importCsv( );
 
 }
 
