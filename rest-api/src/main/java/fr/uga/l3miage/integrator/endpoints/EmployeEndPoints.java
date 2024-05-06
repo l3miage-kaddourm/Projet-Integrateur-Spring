@@ -26,7 +26,6 @@ public interface EmployeEndPoints {
     @RequestMapping("/livreurs")
     Set<EmployeResponseDTO> getAllLivreurs();
 
-
     @PostMapping(value = "/import",consumes ={"multipart/from-data"} )
      void importCsv( );
 
