@@ -1,7 +1,8 @@
-package fr.uga.l3miage.integrator.models;
+package fr.uga.l3miage.integrator.responses;
 
 
 import fr.uga.l3miage.integrator.enums.EtatsDeLivraison;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
 import javax.persistence.*;
@@ -9,17 +10,17 @@ import java.sql.Time;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-@Entity
-@Builder
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class LivraisonEntity {
-    @Id
+@NoArgsConstructor
+@Builder
+@Data
+@Schema(name = "LivraisonResponseDTO", description = "Livraison response")
+public class LivraisonResponseDTO {
+
     private String reference;
 
-    @Enumerated(EnumType.STRING)
     private EtatsDeLivraison etat;
 
     private Double montant;
@@ -38,11 +39,6 @@ public class LivraisonEntity {
 
     private Integer tdmEffectif;
 
-    @OneToMany(mappedBy = "livraison")
-    private Set<CommandeEntity> commandes;
-
-    @ManyToOne
-    private TourneeEntity tournee;
 
 
 

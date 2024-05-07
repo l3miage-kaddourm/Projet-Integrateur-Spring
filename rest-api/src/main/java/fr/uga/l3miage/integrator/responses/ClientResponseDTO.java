@@ -1,27 +1,24 @@
-package fr.uga.l3miage.integrator.models;
-
+package fr.uga.l3miage.integrator.responses;
 
 import fr.uga.l3miage.integrator.DataType.Adresse;
 import fr.uga.l3miage.integrator.DataType.GeoPosition;
 import fr.uga.l3miage.integrator.enums.EtatsDeClient;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.util.Set;
 
-@Entity
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
-public class ClientEntity {
-    @Id
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Data
+@Schema(name = "ClientResponseDTO", description = "Client response")
+public class ClientResponseDTO {
+
     private String email;
 
-    
+
     private String prenom;
     private String nom;
     private Double montantTotal;
@@ -29,6 +26,5 @@ public class ClientEntity {
     private GeoPosition position;
     private EtatsDeClient etat;
 
-    @OneToMany(mappedBy = "client")
-    private Set<CommandeEntity> commandes;
+
 }
