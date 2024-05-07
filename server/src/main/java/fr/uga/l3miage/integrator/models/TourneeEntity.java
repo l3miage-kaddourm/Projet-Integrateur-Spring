@@ -31,8 +31,8 @@ public class TourneeEntity {
 
     private Double distanceDeRetour;
 
-//    @OneToMany(mappedBy = "tournee")
-//    private Set<LivraisonEntity> livraisons;
+    @OneToMany(mappedBy = "tournee")
+    private Set<LivraisonEntity> livraisons;
 //
 //    @ManyToOne
 //    private JourneeEntity journee;

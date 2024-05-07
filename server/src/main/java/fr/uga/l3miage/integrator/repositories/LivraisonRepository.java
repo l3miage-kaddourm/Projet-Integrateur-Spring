@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LivraisonRepository extends JpaRepository<LivraisonEntity, String> {
+
+        LivraisonEntity findByReference(String reference);
 }
