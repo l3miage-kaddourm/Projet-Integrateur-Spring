@@ -65,7 +65,7 @@ public class CommandeService {
 
 
     public Set<CommandeEntity> parseCsv() throws IOException {
-        try (Reader reader = new BufferedReader(new FileReader("C:\\Users\\kanikisenci\\Desktop\\miage\\Projet_Integrateur\\Spring\\server\\src\\main\\java\\fr\\uga\\l3miage\\integrator\\data\\Commandes.csv"))) {
+        try (Reader reader = new BufferedReader(new FileReader("C:\\Users\\Mohamed AEK\\Desktop\\perso\\Etudes\\L3 UGA\\S6\\Projet\\Projet-Integrateur-Spring\\server\\src\\main\\java\\fr\\uga\\l3miage\\integrator\\data\\Commandes.csv"))) {
             HeaderColumnNameMappingStrategy<CommandeStrategie> strategy = new HeaderColumnNameMappingStrategy<>();
             strategy.setType(CommandeStrategie.class);
             CsvToBean<CommandeStrategie> csvToBean =
