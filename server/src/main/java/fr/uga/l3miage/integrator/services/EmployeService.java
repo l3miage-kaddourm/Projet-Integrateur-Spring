@@ -23,8 +23,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -42,7 +40,7 @@ public class EmployeService {
 
     public Set<EmployeResponseDTO> getLivreurs() {
         try {
-            return employeComponent.finAllLivreurs().stream()
+            return employeComponent.findAllLivreurs().stream()
                     .map(employeMapper::convertToDTO)
                     .collect(Collectors.toSet());
         } catch (NotFoundLivreursException e) {

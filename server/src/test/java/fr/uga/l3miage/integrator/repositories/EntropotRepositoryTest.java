@@ -1,7 +1,6 @@
 package fr.uga.l3miage.integrator.repositories;
 
 
-
 import fr.uga.l3miage.integrator.models.EntrepotEntity;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
