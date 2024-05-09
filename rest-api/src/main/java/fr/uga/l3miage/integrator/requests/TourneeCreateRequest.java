@@ -2,6 +2,7 @@ package fr.uga.l3miage.integrator.requests;
 
 
 import fr.uga.l3miage.integrator.enums.EtatsDeTournee;
+import fr.uga.l3miage.integrator.responses.JourneeResponseDTO;
 import lombok.*;
 
 @Getter
@@ -18,4 +19,5 @@ public class TourneeCreateRequest {
     private Integer tdmEffective;
     private Double distanceAparcourir;
     private Double distanceDeRetour;
+    private JourneeResponseDTO journee;
 }

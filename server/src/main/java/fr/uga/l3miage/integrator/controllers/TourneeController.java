@@ -16,7 +16,7 @@ public class TourneeController  implements TourneeEndpoints {
     @Autowired
     private final TourneeService tourneeService;
 
-@Override
+    @Override
     public TourneeResponseDTO createTournee(TourneeCreateRequest request) {
         return tourneeService.createTournee(request);
     }

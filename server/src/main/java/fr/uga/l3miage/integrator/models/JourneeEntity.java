@@ -2,9 +2,7 @@ package fr.uga.l3miage.integrator.models;
 
 
 import fr.uga.l3miage.integrator.enums.EtatsDeJournee;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -14,10 +12,11 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Setter
+@Getter
 public class JourneeEntity {
     @Id
     private String reference;
-
     @Enumerated(EnumType.STRING)
     private EtatsDeJournee etat;
 
@@ -29,9 +28,9 @@ public class JourneeEntity {
 
     private Integer tdmTheorique;
 
-//    @OneToMany(mappedBy = "journee")
-//    private Set<TourneeEntity> tournees;
-//
+    @OneToMany(mappedBy = "journee")
+    private Set<TourneeEntity> tournees;
+
 //    @ManyToOne
 //    private EntrepotEntity entrepot;
 

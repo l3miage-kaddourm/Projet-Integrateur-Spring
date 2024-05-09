@@ -33,17 +33,14 @@ public class TourneeEntity {
 
     @OneToMany(mappedBy = "tournee")
     private Set<LivraisonEntity> livraisons;
-//
-//    @ManyToOne
-//    private JourneeEntity journee;
-//
-////    @ManyToMany(mappedBy = "tournees")
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private JourneeEntity journee;
+
+    ////    @ManyToMany(mappedBy = "tournees")
 ////    private Set<EmployeEntity> employes;
 //
 //    @ManyToOne
 //    private CamionEntity camion;
-
-
-
 
 }

@@ -14,6 +14,11 @@ public class TourneeComponent {
 
 
     public TourneeEntity createTournee(TourneeEntity tourneeEntity) {
-        return tourneeRepository.save(tourneeEntity);
+
+       try {
+           return tourneeRepository.save(tourneeEntity);
+       } catch (Exception e) {
+           throw new RuntimeException("Error while creating tournee", e);
+       }
     }
 }
