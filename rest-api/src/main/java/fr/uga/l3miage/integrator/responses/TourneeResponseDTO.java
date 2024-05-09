@@ -37,4 +37,7 @@ public class TourneeResponseDTO {
 
     @Schema(description = "Tournee return distance")
     private Double distanceDeRetour;
+
+    @Schema(description = "Tournee day")
+    private JourneeResponseDTO journee;
 }

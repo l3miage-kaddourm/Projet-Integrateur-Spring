@@ -9,12 +9,13 @@ import fr.uga.l3miage.integrator.responses.TourneeResponseDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper
+@Mapper(uses = JourneeMapper.class)
 public interface TourneeMapper {
 
+        @Mapping(source = "journee", target = "journee")
         TourneeEntity toEntity(TourneeCreateRequest tourneeCreateRequest);
 
-
+        @Mapping(source = "journee", target = "journee")
         TourneeResponseDTO toResponse(TourneeEntity tourneeEntity);
 
 }

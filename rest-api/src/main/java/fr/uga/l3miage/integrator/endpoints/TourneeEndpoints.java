@@ -17,7 +17,7 @@ public interface TourneeEndpoints {
     @Operation(description = "Create a new tournee")
     @ApiResponse(responseCode = "200",description = "Tournee created successfully")
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping("/create")
+    @PostMapping("/create")
     TourneeResponseDTO createTournee(@RequestBody TourneeCreateRequest request);
 
 }
