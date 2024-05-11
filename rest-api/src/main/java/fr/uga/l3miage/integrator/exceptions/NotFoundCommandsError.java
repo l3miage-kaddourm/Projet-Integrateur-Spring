@@ -5,11 +5,9 @@ import lombok.Data;
 
 @Data
 @Builder
-public class NotFoundLivreursError {
+public class NotFoundCommandsError {
     private String message;
     private TypeError typeError;
-
-
 
     public enum TypeError {
         NOTFOUND,

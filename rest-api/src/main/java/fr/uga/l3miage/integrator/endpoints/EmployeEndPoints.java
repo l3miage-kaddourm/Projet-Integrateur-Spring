@@ -18,8 +18,8 @@ import java.util.Set;
 public interface EmployeEndPoints {
 
     @Operation(description = "Récuperer la liste des livreurs")
-    @ApiResponse(responseCode = "200",description = "la liste des livreurs a été récupérée avec succès",
-            content = @Content(schema = @Schema(implementation = NotFoundLivreursException.class)))
+    @ApiResponse(responseCode = "200",description = "la liste des livreurs a été récupérée avec succès")
+    @ApiResponse(responseCode = "404",description = "Aucun livreur n'a été trouvé")
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping("/livreurs")
     Set<EmployeResponseDTO> getAllLivreurs();
