@@ -81,7 +81,7 @@ public class EntrepotService {
                     .collect(Collectors.toSet());
         }
         catch (IOException e){
-            throw new CsvImportRestException("Erreur lors de l'importation des employés", e);
+            throw new CsvImportRestException("Error during the importation of Entrepots", e);
         }
 
     }

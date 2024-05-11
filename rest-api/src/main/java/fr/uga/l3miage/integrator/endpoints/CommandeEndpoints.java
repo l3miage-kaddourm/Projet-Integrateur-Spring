@@ -1,7 +1,6 @@
 package fr.uga.l3miage.integrator.endpoints;
 
 
-import fr.uga.l3miage.integrator.exceptions.technical.NotFoundLivreursException;
 import fr.uga.l3miage.integrator.responses.CommandeResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
