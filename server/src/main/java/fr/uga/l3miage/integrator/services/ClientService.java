@@ -5,12 +5,10 @@ import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.bean.HeaderColumnNameMappingStrategy;
 import fr.uga.l3miage.integrator.CsvStrategies.ClientStrategie;
-import fr.uga.l3miage.integrator.CsvStrategies.CommandeStrategie;
 import fr.uga.l3miage.integrator.DataType.Adresse;
 import fr.uga.l3miage.integrator.DataType.GeoPosition;
 import fr.uga.l3miage.integrator.exceptions.rest.CsvImportRestException;
 import fr.uga.l3miage.integrator.models.ClientEntity;
-import fr.uga.l3miage.integrator.models.CommandeEntity;
 import fr.uga.l3miage.integrator.repositories.ClientRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -24,9 +22,6 @@ import java.util.stream.Collectors;
 public class ClientService {
 
     private final ClientRepository clientRepository;
-
-
-
 
     public void importCsv() throws IOException {
         Set<ClientEntity> clients = parseCsv();
