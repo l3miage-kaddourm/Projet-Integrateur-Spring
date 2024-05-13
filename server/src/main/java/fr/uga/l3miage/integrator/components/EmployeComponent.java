@@ -17,7 +17,7 @@ public class EmployeComponent {
     private final EmployeRepository employeRepository;
 
 
-    public Set<EmployeEntity> finAllLivreurs() throws NotFoundLivreursException {
+    public Set<EmployeEntity> findAllLivreurs() throws NotFoundLivreursException {
 
         Set<EmployeEntity> livreurs=employeRepository.findAllByEmploi(Emploi.livreur);
         if(livreurs.isEmpty())
