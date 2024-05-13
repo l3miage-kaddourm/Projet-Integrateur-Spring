@@ -6,6 +6,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -17,6 +18,7 @@ import java.util.Set;
 public class JourneeEntity {
     @Id
     private String reference;
+
     @Enumerated(EnumType.STRING)
     private EtatsDeJournee etat;
 
@@ -26,13 +28,11 @@ public class JourneeEntity {
 
     private Double montant;
 
-    private Integer tdmTheorique;
-
     @OneToMany(mappedBy = "journee")
-    private Set<TourneeEntity> tournees;
+    private Set<TourneeEntity> tournees ;
 
-//    @ManyToOne
-//    private EntrepotEntity entrepot;
+    @ManyToOne
+    private EntrepotEntity entrepot;
 
 
 }

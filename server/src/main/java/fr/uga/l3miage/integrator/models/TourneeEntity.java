@@ -23,13 +23,13 @@ public class TourneeEntity {
 
     private Double montant;
 
-    private Integer tdmTheorique;
-
-    private Integer tdmEffective;
+//    private Integer tdmTheorique;
+//
+//    private Integer tdmEffective;
 
     private Double distanceAparcourir;
 
-    private Double distanceDeRetour;
+
 
     @OneToMany(mappedBy = "tournee")
     private Set<LivraisonEntity> livraisons;
@@ -39,8 +39,8 @@ public class TourneeEntity {
 
     ////    @ManyToMany(mappedBy = "tournees")
 ////    private Set<EmployeEntity> employes;
-//
-//    @ManyToOne
-//    private CamionEntity camion;
+
+    @ManyToOne
+    private CamionEntity camion;
 
 }

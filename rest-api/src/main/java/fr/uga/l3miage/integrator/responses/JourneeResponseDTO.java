@@ -40,8 +40,13 @@ public class JourneeResponseDTO {
     @Schema(description = "Journee distanceDeRetour", example = "100.0")
     private Double montant;
 
-    @Schema(description = "Journee tdmTheorique", example = "100")
-    private Integer tdmTheorique;
+
+    @Schema(description = "Journee tournees", example = "TourneeEntity")
+    private Set<TourneeResponseDTO> tournees;
+
+
+    @Schema(description = "Journee entrepot", example = "EntrepotEntity")
+    private EntrepotResponseDTO entrepot;
 
 
 }

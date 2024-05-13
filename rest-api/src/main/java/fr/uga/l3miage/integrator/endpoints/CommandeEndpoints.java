@@ -26,7 +26,7 @@ public interface CommandeEndpoints {
     Set<CommandeResponseDTO> getAllCommands();
 
 
-    @PostMapping(value = "/import",consumes ={"multipart/from-data"} )
+    @PostMapping(value = "/import/commande",consumes ={"multipart/from-data"} )
     void importCsv( );
 
 }
