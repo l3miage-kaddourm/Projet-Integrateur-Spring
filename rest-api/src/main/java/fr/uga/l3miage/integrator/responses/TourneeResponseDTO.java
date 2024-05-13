@@ -5,6 +5,8 @@ import fr.uga.l3miage.integrator.enums.EtatsDeTournee;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
+import java.util.Set;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -26,18 +28,19 @@ public class TourneeResponseDTO {
     private Double montant;
 
 
-    @Schema(description = "Tournee theorical time")
-    private Integer tdmTheorique;
-
-    @Schema(description = "Tournee effective time")
-    private Integer tdmEffective;
+//    @Schema(description = "Tournee theorical time")
+//    private Integer tdmTheorique;
+//
+//    @Schema(description = "Tournee effective time")
+//    private Integer tdmEffective;
 
     @Schema(description = "Tournee distance to travel")
     private Double distanceAparcourir;
 
-    @Schema(description = "Tournee return distance")
-    private Double distanceDeRetour;
 
     @Schema(description = "Tournee day")
     private JourneeResponseDTO journee;
+
+    @Schema(description = "Tournee delivery")
+    private Set<LivraisonResponseDTO> livraison;
 }

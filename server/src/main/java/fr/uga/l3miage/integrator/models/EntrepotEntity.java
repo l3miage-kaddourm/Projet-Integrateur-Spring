@@ -28,11 +28,11 @@ public class EntrepotEntity {
     @Embedded
     private GeoPosition position;
 
-//    @OneToMany(mappedBy = "entrepot")
-//    private Set<CamionEntity> camions;
-//
-//    @OneToMany(mappedBy = "entrepot")
-//    private Set<JourneeEntity> journees;
+    @OneToMany(mappedBy = "entrepot")
+    private Set<CamionEntity> camions;
+
+    @OneToMany(mappedBy = "entrepot")
+    private Set<JourneeEntity> journees;
 //
     @OneToMany(mappedBy = "entrepot")
     private Set< EmployeEntity> employes;

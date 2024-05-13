@@ -56,8 +56,5 @@ public class CommandeEntity {
 //    private Set<ProduitEntity> produits;
 
 
-    public String getClient_email() {
-        return this.client.getEmail();
-    }
 
 }
