@@ -1,6 +1,6 @@
 package fr.uga.l3miage.integrator.controllers;
 
-import fr.uga.l3miage.integrator.endpoints.EmployeEndPoints;
+import fr.uga.l3miage.integrator.endpoints.EmployeEndpoints;
 import fr.uga.l3miage.integrator.exceptions.rest.NotFoundLivreursRestException;
 import fr.uga.l3miage.integrator.responses.EmployeResponseDTO;
 import fr.uga.l3miage.integrator.services.EmployeService;
@@ -18,7 +18,7 @@ import java.util.Set;
 @Controller
 @RequiredArgsConstructor
 @DependsOn("entrepotController")
-public class EmployeController implements EmployeEndPoints {
+public class EmployeController implements EmployeEndpoints {
 
 
     @Autowired

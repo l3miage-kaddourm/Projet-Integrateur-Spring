@@ -17,6 +17,6 @@ public interface EntrepotEndpoints {
 
 
 
-    @PostMapping(value = "/import",consumes ={"multipart/from-data"} )
+    @PostMapping(value = "/import/entrepot",consumes ={"multipart/from-data"} )
      void importCsv( );
 }

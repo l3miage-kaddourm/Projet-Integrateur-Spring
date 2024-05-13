@@ -3,8 +3,6 @@ package fr.uga.l3miage.integrator.endpoints;
 
 import fr.uga.l3miage.integrator.responses.EmployeResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +13,7 @@ import java.util.Set;
 @RestController
 @CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/employes")
-public interface EmployeEndPoints {
+public interface EmployeEndpoints {
 
     @Operation(description = "Récuperer la liste des livreurs")
     @ApiResponse(responseCode = "200",description = "la liste des livreurs a été récupérée avec succès")
@@ -25,7 +23,7 @@ public interface EmployeEndPoints {
     Set<EmployeResponseDTO> getAllLivreurs();
 
 
-    @PostMapping(value = "/import",consumes ={"multipart/from-data"} )
+    @PostMapping(value = "/import/employe",consumes ={"multipart/from-data"} )
      void importCsv( );
 
 }

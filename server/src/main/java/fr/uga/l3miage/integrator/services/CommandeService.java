@@ -58,7 +58,6 @@ public class CommandeService {
 
 
 
-    @DependsOn("clientService.importCsv")
     public void importCsv() throws IOException{
         Set<CommandeEntity> commandes = parseCsv();
         commandeRepository.saveAll(commandes);

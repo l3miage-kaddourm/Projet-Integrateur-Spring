@@ -26,8 +26,8 @@ public class ProduitEntity {
     private double prix;
 
 
-    @Column(nullable = true)
-    private Integer tdmTheorique;
+//    @Column(nullable = true)
+//    private Integer tdmTheorique;
 
     @Enumerated(EnumType.STRING)
     private Encoubrement encoubrement;
