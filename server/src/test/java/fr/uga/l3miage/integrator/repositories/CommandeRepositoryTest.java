@@ -1,8 +1,10 @@
 package fr.uga.l3miage.integrator.repositories;
 
 
+import fr.uga.l3miage.integrator.enums.EtatsDeCommande;
 import fr.uga.l3miage.integrator.models.ClientEntity;
 import fr.uga.l3miage.integrator.models.CommandeEntity;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -25,16 +27,19 @@ public class CommandeRepositoryTest {
         CommandeEntity commandeEntity = CommandeEntity
                 .builder()
                 .reference("IDE120D")
+                .etat(EtatsDeCommande.ouverte)
                 .build();
 
         CommandeEntity commandeEntity1 = CommandeEntity
                 .builder()
                 .reference("IHD120D23")
+                .etat(EtatsDeCommande.ouverte)
                 .build();
 
         CommandeEntity commandeEntity2 = CommandeEntity
                 .builder()
                 .reference("IHE120D1")
+                .etat(EtatsDeCommande.ouverte)
                 .build();
 
 
@@ -43,7 +48,7 @@ public class CommandeRepositoryTest {
         commandeRepository.save(commandeEntity2);
 
         //when
-        Set<CommandeEntity> commandeResponses = commandeRepository.findAllBy();
+        Set<CommandeEntity> commandeResponses = commandeRepository.findAllByEtatOrderByDateAsc(EtatsDeCommande.ouverte);
 
         //then
         assertThat(commandeResponses).hasSize(3);

@@ -4,6 +4,7 @@ package fr.uga.l3miage.integrator.repositories;
 import fr.uga.l3miage.integrator.enums.Emploi;
 import fr.uga.l3miage.integrator.models.ClientEntity;
 import fr.uga.l3miage.integrator.models.EmployeEntity;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -18,6 +19,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class EmployeRepositoryTest {
     @Autowired
     private EmployeRepository employeRepository;
+
+    @BeforeEach
+    public void setUp() {
+        employeRepository.deleteAll();
+    }
 
     @Test
     void testfindAllByEmploi() {
@@ -55,6 +61,6 @@ public class EmployeRepositoryTest {
         Set<EmployeEntity> employeResponses = employeRepository.findAllByEmploi(Emploi.livreur);
 
         //then
-        assertThat(employeResponses).hasSize(15);
+        assertThat(employeResponses).hasSize(2);
     }
 }

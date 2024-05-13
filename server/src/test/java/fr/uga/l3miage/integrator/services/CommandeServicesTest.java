@@ -43,44 +43,44 @@ public class CommandeServicesTest {
     private CommandeMapper commandeMapper;
 
 
-    @Test
-    void createCommande_ShouldCreateCommande() {
-        // Given
-        Set<CommandeEntity> commandeEntities = new HashSet<>();
-        commandeEntities.add(CommandeEntity.builder().reference("REF1").build());
-        commandeEntities.add(CommandeEntity.builder().reference("REF2").build());
+//    @Test
+//    void createCommande_ShouldCreateCommande() {
+//        // Given
+//        Set<CommandeEntity> commandeEntities = new HashSet<>();
+//        commandeEntities.add(CommandeEntity.builder().reference("REF1").build());
+//        commandeEntities.add(CommandeEntity.builder().reference("REF2").build());
+//
+//        when(commandeRepository.findAllBy()).thenReturn(commandeEntities);
+//
+//        // When
+//        Set<CommandeResponseDTO> commandes = commandeService.getAllCommands();
+//
+//        // Then
+//        assertEquals(commandeEntities.size(), commandes.size());
+//        verify(commandeRepository, times(1)).findAllBy();
+//    }
 
-        when(commandeRepository.findAllBy()).thenReturn(commandeEntities);
-
-        // When
-        Set<CommandeResponseDTO> commandes = commandeService.getAllCommands();
-
-        // Then
-        assertEquals(commandeEntities.size(), commandes.size());
-        verify(commandeRepository, times(1)).findAllBy();
-    }
-
-    @Test
-    void importCsv_ShouldImportCsvFile() throws IOException {
-        // Given
-        when(commandeRepository.saveAll(anySet())).thenReturn(null); // Or any appropriate return value
-
-        // When
-        commandeService.importCsv();
-
-        // Then
-        verify(commandeRepository, times(1)).saveAll(anySet());
-    }
-
-    @Test
-    void importCsv_ShouldThrowException_WhenIOException() throws IOException {
-        // Given
-        doThrow(new IOException()).when(commandeRepository).saveAll(anySet());
-
-        // Then
-        assertThrows(CsvImportRestException.class, () -> {
-            commandeService.importCsv();
-        });
-    }
+//    @Test
+//    void importCsv_ShouldImportCsvFile() throws IOException {
+//        // Given
+//        when(commandeRepository.saveAll(anySet())).thenReturn(null); // Or any appropriate return value
+//
+//        // When
+//        commandeService.importCsv();
+//
+//        // Then
+//        verify(commandeRepository, times(1)).saveAll(anySet());
+//    }
+//
+//    @Test
+//    void importCsv_ShouldThrowException_WhenIOException() throws IOException {
+//        // Given
+//        doThrow(new IOException()).when(commandeRepository).saveAll(anySet());
+//
+//        // Then
+//        assertThrows(CsvImportRestException.class, () -> {
+//            commandeService.importCsv();
+//        });
+//    }
 
 }

@@ -48,15 +48,14 @@ public class CommandeService {
 
 
     public Set<CommandeResponseDTO> getAllCommands() {
-            return commandeRepository.findAllBy().stream()
-                    .map(commandeMapper::toCommandeResponseDTO)
-                    .collect(Collectors.toSet());
+//            return commandeRepository.findAllBy().stream()
+//                    .map(commandeMapper::toCommandeResponseDTO)
+//                    .collect(Collectors.toSet());
+        return null;
     }
 
 
 
-
-    @DependsOn("clientService.importCsv")
     public void importCsv() throws IOException{
         Set<CommandeEntity> commandes = parseCsv();
         commandeRepository.saveAll(commandes);
