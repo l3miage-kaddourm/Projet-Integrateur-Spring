@@ -35,13 +35,6 @@ public class EntrepotService {
     private final EntrepotRepository entrepotRepository;
 
 
-    public EntrepotResponseDTO findByNom(String nom) {
-        EntrepotEntity entrepot = entrepotRepository.findByNom(nom);
-        if (entrepot == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Entrepot not found");
-        }
-        return EntrepotMapper.INSTANCE.entrepotToEntrepotDTO(entrepot);
-    }
 
     public void importCsv() throws IOException {
         Set<EntrepotEntity> entrepots = parseCsv();
@@ -81,7 +74,7 @@ public class EntrepotService {
                     .collect(Collectors.toSet());
         }
         catch (IOException e){
-            throw new CsvImportRestException("Erreur lors de l'importation des employés", e);
+            throw new CsvImportRestException("Error during the importation of Entrepots", e);
         }
 
     }

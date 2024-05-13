@@ -63,7 +63,7 @@ public class ClientService {
                     })
                     .collect(Collectors.toSet());
         } catch (IOException e) {
-            throw new CsvImportRestException("Error during the importation of commandes", e);
+            throw new CsvImportRestException("Error during the importation of clients", e);
         }
     }
 }

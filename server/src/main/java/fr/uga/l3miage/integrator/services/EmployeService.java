@@ -48,7 +48,7 @@ public class EmployeService {
         }
     }
 
-
+    @DependsOn("entrepotService.importCsv")
     public void importCsv() throws IOException{
             Set<EmployeEntity> employes = parseCsv();
             employeRepository.saveAll(employes);
@@ -82,7 +82,7 @@ public class EmployeService {
                     .collect(Collectors.toSet());
         }
         catch (IOException e){
-            throw new CsvImportRestException("Erreur lors de l'importation des employés", e);
+            throw new CsvImportRestException("Error during the importation of Employs", e);
         }
 
     }

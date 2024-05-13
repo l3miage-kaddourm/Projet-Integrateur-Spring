@@ -15,8 +15,7 @@ import java.util.Set;
 public interface EntrepotEndpoints {
 
 
-    @RequestMapping("/Grenis")
-    EntrepotResponseDTO getEntrepotByName();
+
 
     @PostMapping(value = "/import",consumes ={"multipart/from-data"} )
      void importCsv( );

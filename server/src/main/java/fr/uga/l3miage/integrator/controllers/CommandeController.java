@@ -29,6 +29,7 @@ public class CommandeController implements CommandeEndpoints {
 
     @Override
     public Set<CommandeResponseDTO> getAllCommands() {
+
         return commandeService.getAllCommands();
     }
 

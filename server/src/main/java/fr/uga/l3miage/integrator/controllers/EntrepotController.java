@@ -18,9 +18,6 @@ public class EntrepotController implements EntrepotEndpoints {
     @Autowired
     private final EntrepotService entrepotService;
 
-    public EntrepotResponseDTO getEntrepotByName() {
-        return entrepotService.findByNom("Grenis");
-    }
 
     @PostConstruct
     public void importCsv() {
