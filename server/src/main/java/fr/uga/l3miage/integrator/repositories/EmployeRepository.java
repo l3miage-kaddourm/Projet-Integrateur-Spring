@@ -13,8 +13,5 @@ public interface EmployeRepository extends JpaRepository<EmployeEntity, String> 
 
         Set<EmployeEntity> findAllByEmploi(Emploi emploi);
         EmployeEntity findByTrigramme(String trigramme);
-
-
-
 }
 

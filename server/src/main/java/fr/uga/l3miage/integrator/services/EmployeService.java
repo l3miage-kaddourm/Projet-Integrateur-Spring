@@ -40,15 +40,13 @@ public class EmployeService {
 
     public Set<EmployeResponseDTO> getLivreurs() {
         try {
-            return employeComponent.finAllLivreurs().stream()
+            return employeComponent.findAllLivreurs().stream()
                     .map(employeMapper::convertToDTO)
                     .collect(Collectors.toSet());
         } catch (NotFoundLivreursException e) {
             throw new NotFoundLivreursRestException(e.getMessage(), NotFoundLivreursRestException.Type.NOTFOUND);
         }
     }
-
-
 
     @DependsOn("entrepotService.importCsv")
     public void importCsv() throws IOException{
@@ -57,7 +55,7 @@ public class EmployeService {
 
     }
     public Set<EmployeEntity> parseCsv() throws IOException{
-        try(Reader reader = new BufferedReader(new FileReader("C:\\Users\\kanikisenci\\Desktop\\miage\\Projet_Integrateur\\Spring\\server\\src\\main\\java\\fr\\uga\\l3miage\\integrator\\data\\Employes.csv"))){
+        try(Reader reader = new BufferedReader(new FileReader("C:\\Users\\Mohamed AEK\\Desktop\\perso\\Etudes\\L3 UGA\\S6\\Projet\\Projet-Integrateur-Spring\\server\\src\\main\\java\\fr\\uga\\l3miage\\integrator\\data\\Employes.csv"))){
             HeaderColumnNameMappingStrategy<EmployeStrategie> strategy = new HeaderColumnNameMappingStrategy<>();
             strategy.setType(EmployeStrategie.class);
             CsvToBean<EmployeStrategie> csvToBean =

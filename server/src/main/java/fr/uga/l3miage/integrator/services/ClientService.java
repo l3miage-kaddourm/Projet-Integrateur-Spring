@@ -5,20 +5,15 @@ import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.bean.HeaderColumnNameMappingStrategy;
 import fr.uga.l3miage.integrator.CsvStrategies.ClientStrategie;
-import fr.uga.l3miage.integrator.CsvStrategies.CommandeStrategie;
 import fr.uga.l3miage.integrator.DataType.Adresse;
 import fr.uga.l3miage.integrator.DataType.GeoPosition;
 import fr.uga.l3miage.integrator.exceptions.rest.CsvImportRestException;
 import fr.uga.l3miage.integrator.models.ClientEntity;
-import fr.uga.l3miage.integrator.models.CommandeEntity;
 import fr.uga.l3miage.integrator.repositories.ClientRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
+import java.io.*;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -28,9 +23,6 @@ public class ClientService {
 
     private final ClientRepository clientRepository;
 
-
-
-
     public void importCsv() throws IOException {
         Set<ClientEntity> clients = parseCsv();
         clientRepository.saveAll(clients);
@@ -39,7 +31,7 @@ public class ClientService {
 
 
     public Set<ClientEntity> parseCsv() throws IOException {
-        try (Reader reader = new BufferedReader(new FileReader("C:\\Users\\kanikisenci\\Desktop\\miage\\Projet_Integrateur\\Spring\\server\\src\\main\\java\\fr\\uga\\l3miage\\integrator\\data\\Clients.csv"))) {
+        try (Reader reader = new BufferedReader(new FileReader(new File("C:\\Users\\Mohamed AEK\\Desktop\\perso\\Etudes\\L3 UGA\\S6\\Projet\\Projet-Integrateur-Spring\\server\\src\\main\\java\\fr\\uga\\l3miage\\integrator\\data\\Clients.csv").getAbsolutePath()))) {
             HeaderColumnNameMappingStrategy<ClientStrategie> strategy = new HeaderColumnNameMappingStrategy<>();
             strategy.setType(ClientStrategie.class);
             CsvToBean<ClientStrategie> csvToBean =
