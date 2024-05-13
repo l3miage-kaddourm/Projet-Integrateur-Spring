@@ -59,7 +59,7 @@ public class CamionService {
 
 
     public Set<CamionEntity> parseCsv() throws IOException {
-        try (Reader reader = new BufferedReader(new FileReader("C:\\Users\\kanikisenci\\Desktop\\miage\\Projet_Integrateur\\Spring\\server\\src\\main\\java\\fr\\uga\\l3miage\\integrator\\data\\Camions.csv"))) {
+        try (Reader reader = new BufferedReader(new FileReader("C:\\Users\\Mohamed AEK\\Desktop\\perso\\Etudes\\L3 UGA\\S6\\Projet\\Projet-Integrateur-Spring\\server\\src\\main\\java\\fr\\uga\\l3miage\\integrator\\data\\Camions.csv"))) {
             HeaderColumnNameMappingStrategy<CamionStrategie> strategy = new HeaderColumnNameMappingStrategy<>();
             strategy.setType(CamionStrategie.class);
             CsvToBean<CamionStrategie> csvToBean =

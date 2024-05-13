@@ -1,8 +1,7 @@
 package fr.uga.l3miage.integrator.services;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -73,7 +72,6 @@ public class TourneeServiceTest {
                 .date(new Date())
                 .distanceAParcourir(100.0)
                 .montant(1500.0)
-                .tdmTheorique(480)
                 .build();
         when(journeeRepository.findById("2023-05-13")).thenReturn(Optional.of(journeeEntity));
 
@@ -94,5 +92,51 @@ public class TourneeServiceTest {
         verify(tourneeMapper).toEntity(request);
         verify(tourneeRepository).save(tourneeEntity);
         verify(tourneeMapper).toResponse(tourneeEntity);
+    }
+
+    @Test
+    void canNotCreateTournee() {
+        // Given
+        JourneeResponseDTO journeeDTO = JourneeResponseDTO.builder()
+                .reference("2023-05-14")
+                .build();
+
+        TourneeCreateRequest request = TourneeCreateRequest.builder()
+                .reference("T-002")
+                .etat(EtatsDeTournee.planifiee)
+                .lettre("B")
+                .montant(1600.0)
+                .tdmTheorique(500)
+                .tdmEffective(460)
+                .distanceAparcourir(60.0)
+                .distanceDeRetour(60.0)
+                .journee(journeeDTO)
+                .build();
+
+        JourneeEntity journeeEntity = JourneeEntity.builder()
+                .reference("2023-05-14")
+                .date(new Date())
+                .distanceAParcourir(100.0)
+                .montant(1600.0)
+                .build();
+
+        when(journeeRepository.findById("2023-05-14")).thenReturn(Optional.of(journeeEntity));
+
+        TourneeEntity tourneeEntity = new TourneeEntity();
+        when(tourneeMapper.toEntity(request)).thenReturn(tourneeEntity);
+
+        RuntimeException exception = new RuntimeException("Database error");
+        when(tourneeRepository.save(tourneeEntity)).thenThrow(exception);
+
+        // When
+        Exception thrownException = assertThrows(RuntimeException.class, () -> {
+            tourneeService.createTournee(request);
+        });
+
+        // Then
+        assertThat(thrownException.getMessage()).isEqualTo("Error while creating tournee");
+        verify(journeeRepository).findById("2023-05-14");
+        verify(tourneeMapper).toEntity(request);
+        verify(tourneeRepository).save(tourneeEntity);
     }
 }
