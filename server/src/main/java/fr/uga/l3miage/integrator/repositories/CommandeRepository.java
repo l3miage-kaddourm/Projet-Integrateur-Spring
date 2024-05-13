@@ -10,6 +10,6 @@ import java.util.Set;
 
 @Repository
 public interface CommandeRepository extends JpaRepository<CommandeEntity, String> {
-
-    Set<CommandeEntity> findAllByEtatOrderByDateAsc(EtatsDeCommande etat);
+    //Set<CommandeEntity> findAllByEtatOrderByDateAsc(EtatsDeCommande etat);
+    //Set<CommandeEntity> findAllBy();
 }

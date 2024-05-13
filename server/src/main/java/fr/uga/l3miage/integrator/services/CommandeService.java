@@ -4,6 +4,7 @@ import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.bean.HeaderColumnNameMappingStrategy;
 import fr.uga.l3miage.integrator.CsvStrategies.CommandeStrategie;
+import fr.uga.l3miage.integrator.components.CommandeComponent;
 import fr.uga.l3miage.integrator.exceptions.rest.CsvImportRestException;
 import fr.uga.l3miage.integrator.exceptions.rest.NotFoundLivreursRestException;
 import fr.uga.l3miage.integrator.mappers.CommandeMapper;
@@ -40,12 +41,15 @@ public class CommandeService {
     private final CommandeRepository commandeRepository;
 
     @Autowired
+    private final CommandeComponent commandeComponent;
+
+    @Autowired
     private final CommandeMapper commandeMapper;
 
 
     public Set<CommandeResponseDTO> getAllCommands() {
         try {
-            return commandeRepository.findAllBy().stream()
+            return commandeComponent.findAllCommandes().stream()
                     .map(commandeMapper::toCommandeResponseDTO)
                     .collect(Collectors.toSet());
 
