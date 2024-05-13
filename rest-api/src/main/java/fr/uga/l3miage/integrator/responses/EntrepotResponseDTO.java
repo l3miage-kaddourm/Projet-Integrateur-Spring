@@ -14,7 +14,7 @@ import javax.persistence.Embedded;
 @Builder
 @Data
 @Schema(name = "EntrepotReponseDTO", description = "Entrepot response")
-public class EntrepotResponseDTO {
+public class  EntrepotResponseDTO {
     @Schema(description = "Entrepot name")
     private String nom;
 
