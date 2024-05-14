@@ -6,7 +6,9 @@ import com.opencsv.bean.HeaderColumnNameMappingStrategy;
 import fr.uga.l3miage.integrator.CsvStrategies.CommandeStrategie;
 import fr.uga.l3miage.integrator.components.CommandeComponent;
 import fr.uga.l3miage.integrator.exceptions.rest.CsvImportRestException;
+import fr.uga.l3miage.integrator.exceptions.rest.NotFoundCommandsRestException;
 import fr.uga.l3miage.integrator.exceptions.rest.NotFoundLivreursRestException;
+import fr.uga.l3miage.integrator.exceptions.technical.NotFoundCommandsException;
 import fr.uga.l3miage.integrator.mappers.CommandeMapper;
 import fr.uga.l3miage.integrator.models.ClientEntity;
 import fr.uga.l3miage.integrator.models.CommandeEntity;
@@ -27,6 +29,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+
 @Service
 @RequiredArgsConstructor
 public class CommandeService {
@@ -53,8 +57,10 @@ public class CommandeService {
                     .map(commandeMapper::toCommandeResponseDTO)
                     .collect(Collectors.toSet());
 
-           } catch (Exception e) {
-            throw new NotFoundLivreursRestException(e.getMessage(), NotFoundLivreursRestException.Type.NOTFOUND);
+           } catch (NotFoundCommandsException e) {
+            throw new NotFoundCommandsRestException("Aucune Commande Trouvée", NotFoundCommandsRestException.Type.NOTFOUND);
+        } catch (Exception e) {
+            throw new RuntimeException("Unhandled exception occurred", e);
         }
     }
 

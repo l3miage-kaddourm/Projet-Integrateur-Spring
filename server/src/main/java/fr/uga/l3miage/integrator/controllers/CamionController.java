@@ -24,7 +24,6 @@ public class CamionController implements CamionEndpoints {
    public Set<CamionResponseDTO> getAllCamions() {
         return camionService.getAllCamions();
     }
-
     @PostConstruct
     public void importCsv() {
         try {
