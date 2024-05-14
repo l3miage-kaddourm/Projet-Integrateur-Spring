@@ -17,4 +17,5 @@ public interface CommandeRepository extends JpaRepository<CommandeEntity, String
     Set<CommandeEntity> findAllBy();
 
     Optional<CommandeEntity> findByReference(String reference);
+
 }

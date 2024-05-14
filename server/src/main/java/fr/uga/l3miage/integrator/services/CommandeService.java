@@ -5,9 +5,13 @@ import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.bean.HeaderColumnNameMappingStrategy;
 import fr.uga.l3miage.integrator.CsvStrategies.CommandeStrategie;
 import fr.uga.l3miage.integrator.components.CommandeComponent;
+
 import fr.uga.l3miage.integrator.enums.EtatsDeCommande;
+
 import fr.uga.l3miage.integrator.exceptions.rest.CsvImportRestException;
+import fr.uga.l3miage.integrator.exceptions.rest.NotFoundCommandsRestException;
 import fr.uga.l3miage.integrator.exceptions.rest.NotFoundLivreursRestException;
+import fr.uga.l3miage.integrator.exceptions.technical.NotFoundCommandsException;
 import fr.uga.l3miage.integrator.mappers.CommandeMapper;
 import fr.uga.l3miage.integrator.mappers.LigneMapper;
 import fr.uga.l3miage.integrator.models.ClientEntity;
@@ -30,6 +34,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+
 @Service
 @RequiredArgsConstructor
 public class CommandeService {
@@ -42,6 +48,9 @@ public class CommandeService {
 
     @Autowired
     private final CommandeRepository commandeRepository;
+
+    @Autowired
+    private final CommandeComponent commandeComponent;
 
     @Autowired
     private final CommandeMapper commandeMapper;
@@ -76,12 +85,14 @@ public class CommandeService {
 
     public Set<CommandeResponseDTO> getAllCommands() {
         try {
-            return commandeRepository.findAllBy().stream()
+            return commandeComponent.findAllCommandes().stream()
                     .map(commandeMapper::toCommandeResponseDTO)
                     .collect(Collectors.toSet());
 
+        } catch (NotFoundCommandsException e) {
+            throw new NotFoundCommandsRestException("Aucune Commande Trouvée", NotFoundCommandsRestException.Type.NOTFOUND);
         } catch (Exception e) {
-            throw new NotFoundLivreursRestException(e.getMessage(), NotFoundLivreursRestException.Type.NOTFOUND);
+            throw new RuntimeException("Unhandled exception occurred", e);
         }
     }
 

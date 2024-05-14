@@ -12,7 +12,6 @@ public class TourneeComponent {
     private final TourneeRepository tourneeRepository;
 
     public TourneeEntity createTournee(TourneeEntity tourneeEntity) {
-
        try {
            return tourneeRepository.save(tourneeEntity);
        } catch (Exception e) {
