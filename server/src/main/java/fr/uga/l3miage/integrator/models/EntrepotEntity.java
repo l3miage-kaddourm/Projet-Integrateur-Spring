@@ -36,8 +36,8 @@ public class EntrepotEntity {
 //
     @OneToMany(mappedBy = "entrepot")
     private Set< EmployeEntity> employes;
-//
-//    @ManyToMany(mappedBy = "entrepots")
-//    private Set<ProduitEntity> produits;
+
+    @ManyToMany(mappedBy = "entrepots")
+    private Set<ProduitEntity> produits;
 
 }

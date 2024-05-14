@@ -18,8 +18,6 @@ public class EmployeEntity {
     @Id
     private String trigramme;
 
-    private String email;
-
     private String prenom;
 
     private String nom;

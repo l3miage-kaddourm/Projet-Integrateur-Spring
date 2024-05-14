@@ -1,6 +1,5 @@
 package fr.uga.l3miage.integrator.models;
 
-
 import fr.uga.l3miage.integrator.enums.EtatsDeJournee;
 import lombok.*;
 
@@ -28,11 +27,19 @@ public class JourneeEntity {
 
     private Double montant;
 
-    @OneToMany(mappedBy = "journee")
-    private Set<TourneeEntity> tournees ;
+    @OneToMany(mappedBy = "journee", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<TourneeEntity> tournees = new HashSet<>();
 
     @ManyToOne
     private EntrepotEntity entrepot;
 
+    public void addTournee(TourneeEntity tournee) {
+        tournees.add(tournee);
+        tournee.setJournee(this);
+    }
 
+    public void removeTournee(TourneeEntity tournee) {
+        tournees.remove(tournee);
+        tournee.setJournee(null);
+    }
 }

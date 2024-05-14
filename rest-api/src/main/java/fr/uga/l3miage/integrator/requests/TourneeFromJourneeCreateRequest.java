@@ -24,5 +24,9 @@ public class TourneeFromJourneeCreateRequest {
 
     private CamionFromJourneeRequest camion;
 
+
+
 //    private Set<LivraisonResponseDTO> livraisons;
+
+
 }

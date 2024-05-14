@@ -19,5 +19,5 @@ public class TourneeCreateRequest {
     private Integer tdmEffective;
     private Double distanceAparcourir;
     private Double distanceDeRetour;
-    private JourneeResponseDTO journee;
+    private JourneeCreateRequest journee;
 }

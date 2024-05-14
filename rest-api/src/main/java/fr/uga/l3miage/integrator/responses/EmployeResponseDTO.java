@@ -18,9 +18,6 @@ public class EmployeResponseDTO {
     @Schema(description = "Employe id")
     private String trigramme;
 
-    @Schema(description = "Employe name")
-    private String email;
-
     @Schema(description = "Employe first name")
     private String prenom;
 

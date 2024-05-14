@@ -1,12 +1,11 @@
 package fr.uga.l3miage.integrator.models;
 
-
 import fr.uga.l3miage.integrator.enums.EtatsDeCommande;
-import fr.uga.l3miage.integrator.enums.Note;
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -20,14 +19,12 @@ public class CommandeEntity {
     @Id
     private String reference;
 
-
     @Enumerated(EnumType.STRING)
     private EtatsDeCommande etat;
 
-    private LocalDateTime dateDeCreation ;
+    private LocalDateTime dateDeCreation;
 
     private Integer note;
-
 
     private String commentaire;
 
@@ -44,16 +41,12 @@ public class CommandeEntity {
     @ManyToOne
     private LivraisonEntity livraison;
 
+    @OneToMany(mappedBy = "commande", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<LigneEntity> lignes ;
 
-//    @OneToMany(mappedBy = "commande")
-//    private Set<LigneEntity> lignesProduits;
-
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "client_email")
     private ClientEntity client;
-
-//    @ManyToMany
-//    private Set<ProduitEntity> produits;
 
 
 

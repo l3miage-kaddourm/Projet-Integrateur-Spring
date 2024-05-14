@@ -3,8 +3,10 @@ package fr.uga.l3miage.integrator.controllers;
 
 import fr.uga.l3miage.integrator.endpoints.CommandeEndpoints;
 import fr.uga.l3miage.integrator.models.CommandeEntity;
+import fr.uga.l3miage.integrator.models.LigneEntity;
 import fr.uga.l3miage.integrator.responses.CommandeResponseDTO;
 import fr.uga.l3miage.integrator.responses.EntrepotResponseDTO;
+import fr.uga.l3miage.integrator.responses.LigneResponseDTO;
 import fr.uga.l3miage.integrator.services.CommandeService;
 import fr.uga.l3miage.integrator.services.EntrepotService;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +33,18 @@ public class CommandeController implements CommandeEndpoints {
     public Set<CommandeResponseDTO> getAllCommands() {
 
         return commandeService.getAllCommands();
+    }
+
+
+    public Set<LigneResponseDTO> getLignesByCommande() {
+
+        return commandeService.getLignesByCommande("c005");
+    }
+
+    @Override
+    public Set<CommandeResponseDTO> getAllCommandsOuvertes() {
+
+        return commandeService.getAllCommandsOuvertes();
     }
 
     @PostConstruct

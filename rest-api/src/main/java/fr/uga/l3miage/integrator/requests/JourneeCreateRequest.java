@@ -2,6 +2,7 @@ package fr.uga.l3miage.integrator.requests;
 
 
 import fr.uga.l3miage.integrator.enums.EtatsDeJournee;
+import fr.uga.l3miage.integrator.responses.EntrepotResponseDTO;
 import lombok.*;
 
 import java.util.Date;
@@ -27,5 +28,5 @@ public class JourneeCreateRequest {
 
     private Set<TourneeFromJourneeCreateRequest> tournees;
 
-    private String entrepotName ;
+    private EntrepotResponseDTO entrepot ;
 }
