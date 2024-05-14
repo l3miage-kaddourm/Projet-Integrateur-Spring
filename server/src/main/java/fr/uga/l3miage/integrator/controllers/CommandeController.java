@@ -12,6 +12,7 @@ import fr.uga.l3miage.integrator.services.EntrepotService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Controller;
 
 import javax.annotation.PostConstruct;
