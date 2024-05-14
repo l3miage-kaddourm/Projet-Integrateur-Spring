@@ -11,4 +11,6 @@ public interface EntrepotMapper {
     EntrepotMapper INSTANCE = Mappers.getMapper(EntrepotMapper.class);
 
     EntrepotResponseDTO entrepotToEntrepotDTO(EntrepotEntity entrepot);
+
+    EntrepotEntity entrepotDTOToEntrepot(EntrepotResponseDTO entrepot);
 }

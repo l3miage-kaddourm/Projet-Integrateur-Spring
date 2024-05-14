@@ -5,14 +5,16 @@ import fr.uga.l3miage.integrator.requests.JourneeCreateRequest;
 import fr.uga.l3miage.integrator.responses.JourneeResponseDTO;
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(uses = {TourneeMapper.class, EntrepotMapper.class})
 public interface JourneeMapper {
 
 
     JourneeResponseDTO toResponse(JourneeEntity journeeEntity);
 
-    JourneeEntity toJourneeEntityFromTournee(JourneeResponseDTO journeeResponseDTO);
+    JourneeEntity toEntityFromResponse(JourneeResponseDTO journeeResponseDTO);
 
 
-    JourneeEntity toJourneeEntity(JourneeCreateRequest request);
+    JourneeEntity toJourneeEntityFromRequest(JourneeCreateRequest request);
+
+
 }

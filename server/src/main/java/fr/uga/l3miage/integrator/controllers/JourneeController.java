@@ -12,7 +12,7 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 @RequiredArgsConstructor
-@DependsOn("camionController")
+@DependsOn("entrepotController")
 public class JourneeController implements JourneeEndpoints {
         @Autowired
         private final JourneeService journeeService;

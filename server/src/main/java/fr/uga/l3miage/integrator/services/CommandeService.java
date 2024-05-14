@@ -4,15 +4,19 @@ import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.bean.HeaderColumnNameMappingStrategy;
 import fr.uga.l3miage.integrator.CsvStrategies.CommandeStrategie;
+import fr.uga.l3miage.integrator.components.CommandeComponent;
+import fr.uga.l3miage.integrator.enums.EtatsDeCommande;
 import fr.uga.l3miage.integrator.exceptions.rest.CsvImportRestException;
 import fr.uga.l3miage.integrator.exceptions.rest.NotFoundLivreursRestException;
 import fr.uga.l3miage.integrator.mappers.CommandeMapper;
+import fr.uga.l3miage.integrator.mappers.LigneMapper;
 import fr.uga.l3miage.integrator.models.ClientEntity;
 import fr.uga.l3miage.integrator.models.CommandeEntity;
 import fr.uga.l3miage.integrator.repositories.ClientRepository;
 import fr.uga.l3miage.integrator.repositories.CommandeRepository;
 import fr.uga.l3miage.integrator.repositories.LivraisonRepository;
 import fr.uga.l3miage.integrator.responses.CommandeResponseDTO;
+import fr.uga.l3miage.integrator.responses.LigneResponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.DependsOn;
@@ -41,11 +45,16 @@ public class CommandeService {
 
     @Autowired
     private final CommandeMapper commandeMapper;
+    @Autowired
+    private CommandeComponent commandeComponent;
+
+    @Autowired
+    private LigneMapper ligneMapper;
 
 
-    public Set<CommandeResponseDTO> getAllCommands() {
+    public Set<CommandeResponseDTO> getAllCommandsOuvertes() {
         try {
-            return commandeRepository.findAllBy().stream()
+            return commandeComponent.findAllcommandsouverte().stream()
                     .map(commandeMapper::toCommandeResponseDTO)
                     .collect(Collectors.toSet());
 
@@ -53,6 +62,29 @@ public class CommandeService {
             throw new NotFoundLivreursRestException(e.getMessage(), NotFoundLivreursRestException.Type.NOTFOUND);
         }
     }
+
+    public Set<LigneResponseDTO> getLignesByCommande(String reference) {
+        try {
+            return commandeComponent.findLignesByCommande(reference).stream()
+                    .map(ligneMapper::toLigneResponseDTO)
+                    .collect(Collectors.toSet());
+
+        } catch (Exception e) {
+            throw new NotFoundLivreursRestException(e.getMessage(), NotFoundLivreursRestException.Type.NOTFOUND);
+        }
+    }
+
+    public Set<CommandeResponseDTO> getAllCommands() {
+        try {
+            return commandeRepository.findAllBy().stream()
+                    .map(commandeMapper::toCommandeResponseDTO)
+                    .collect(Collectors.toSet());
+
+        } catch (Exception e) {
+            throw new NotFoundLivreursRestException(e.getMessage(), NotFoundLivreursRestException.Type.NOTFOUND);
+        }
+    }
+
 
 
 
@@ -86,6 +118,7 @@ public class CommandeService {
                                 .reference(csvLine.getReference())
                                 .dateDeCreation(dateDeCreation)
                                 .note(csvLine.getNote())
+                                .etat(EtatsDeCommande.ouverte)
                                 .commentaire(csvLine.getCommentaire())
 //                                .livraison(livraisonEntity)
                                 .client(clientEntity)

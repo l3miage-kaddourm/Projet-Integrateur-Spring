@@ -7,6 +7,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -56,6 +57,8 @@ public class CommandeResponseDTO {
 
         @Schema(description = "client de la commande")
         private ClientResponseDTO client;
+
+        private Set<LigneResponseDTO> lignesProduits;
 
 
 

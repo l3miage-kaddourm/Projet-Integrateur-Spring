@@ -50,7 +50,6 @@ public class EmployeService {
 
 
 
-    @DependsOn("entrepotService.importCsv")
     public void importCsv() throws IOException{
             Set<EmployeEntity> employes = parseCsv();
             employeRepository.saveAll(employes);
@@ -72,7 +71,6 @@ public class EmployeService {
                        EntrepotEntity entrepot = entrepotRepository.findByNom(csvLine.getEntrepot());
                        return EmployeEntity.builder()
                                .trigramme(csvLine.getTrigramme())
-                               .email(csvLine.getEmail())
                                .prenom(csvLine.getPrenom())
                                .nom(csvLine.getNom())
                                .photo(csvLine.getPhoto())

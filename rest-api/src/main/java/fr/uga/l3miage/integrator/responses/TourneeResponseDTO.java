@@ -38,9 +38,6 @@ public class TourneeResponseDTO {
     private Double distanceAparcourir;
 
 
-    @Schema(description = "Tournee day")
-    private JourneeResponseDTO journee;
-
     @Schema(description = "Tournee delivery")
     private Set<LivraisonResponseDTO> livraison;
 }

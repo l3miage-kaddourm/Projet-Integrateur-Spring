@@ -2,6 +2,7 @@ package fr.uga.l3miage.integrator.endpoints;
 
 
 import fr.uga.l3miage.integrator.responses.CommandeResponseDTO;
+import fr.uga.l3miage.integrator.responses.LigneResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -22,9 +23,19 @@ public interface CommandeEndpoints {
     @ApiResponse(responseCode = "200",description = "la liste des livreurs a été récupérée avec succès")
    @ApiResponse(responseCode = "408",description = "Aucune commande n'a été trouvée")
     @ResponseStatus(HttpStatus.OK)
+    @RequestMapping("/commandes/ouvertes")
+    Set<CommandeResponseDTO> getAllCommandsOuvertes();
+
+    @Operation(description = "Récuperer la liste des livreurs")
+    @ApiResponse(responseCode = "200",description = "la liste des livreurs a été récupérée avec succès")
+    @ApiResponse(responseCode = "408",description = "Aucune commande n'a été trouvée")
+    @ResponseStatus(HttpStatus.OK)
     @RequestMapping("/commandes")
     Set<CommandeResponseDTO> getAllCommands();
 
+
+    @RequestMapping("/lignesdanscommande")
+    Set<LigneResponseDTO> getLignesByCommande();
 
     @PostMapping(value = "/import/commande",consumes ={"multipart/from-data"} )
     void importCsv( );

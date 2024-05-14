@@ -1,6 +1,5 @@
 package fr.uga.l3miage.integrator.models;
 
-
 import fr.uga.l3miage.integrator.enums.EtatsDeTournee;
 import lombok.*;
 
@@ -17,30 +16,21 @@ public class TourneeEntity {
     @Id
     private String reference;
 
+    @Enumerated(EnumType.STRING)
     private EtatsDeTournee etat;
 
     private String lettre;
 
     private Double montant;
 
-//    private Integer tdmTheorique;
-//
-//    private Integer tdmEffective;
-
     private Double distanceAparcourir;
 
-
-
-    @OneToMany(mappedBy = "tournee")
+    @OneToMany(mappedBy = "tournee", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<LivraisonEntity> livraisons;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private JourneeEntity journee;
-
-    ////    @ManyToMany(mappedBy = "tournees")
-////    private Set<EmployeEntity> employes;
 
     @ManyToOne
     private CamionEntity camion;
-
 }

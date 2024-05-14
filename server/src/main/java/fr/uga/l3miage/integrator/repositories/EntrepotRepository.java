@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface EntrepotRepository extends JpaRepository<EntrepotEntity, String> {
 
     EntrepotEntity findByNom(String nom);
-    EntrepotEntity findByNomIgnoreCase(String nom);
+
 
 }

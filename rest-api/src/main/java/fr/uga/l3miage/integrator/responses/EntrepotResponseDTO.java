@@ -32,3 +32,5 @@ public class  EntrepotResponseDTO {
     @Schema(description = "Entrepot position")
     private GeoPosition position;
 }
+
+
