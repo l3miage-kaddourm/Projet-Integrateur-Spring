@@ -3,11 +3,17 @@ package fr.uga.l3miage.integrator.models;
 
 import fr.uga.l3miage.integrator.DataType.Adresse;
 import fr.uga.l3miage.integrator.DataType.GeoPosition;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Getter
+@Setter
 public class EntrepotEntity {
     @Id
     private String nom;
@@ -27,12 +33,11 @@ public class EntrepotEntity {
 
     @OneToMany(mappedBy = "entrepot")
     private Set<JourneeEntity> journees;
-
-//    @OneToOne(mappedBy = "entrepot")
-//    private EmployeEntity employe;
+//
+    @OneToMany(mappedBy = "entrepot")
+    private Set< EmployeEntity> employes;
 
     @ManyToMany(mappedBy = "entrepots")
     private Set<ProduitEntity> produits;
-
 
 }

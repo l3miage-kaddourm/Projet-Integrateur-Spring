@@ -4,6 +4,6 @@ public enum EtatsDeCommande {
     ouverte,
     planifiee,
     enLivraison,
-    livree,
-    notee,
+    livrée,
+    notée,
 }

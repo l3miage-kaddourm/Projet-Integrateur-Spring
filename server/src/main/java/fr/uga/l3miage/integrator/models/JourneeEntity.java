@@ -1,19 +1,19 @@
 package fr.uga.l3miage.integrator.models;
 
-
 import fr.uga.l3miage.integrator.enums.EtatsDeJournee;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Setter
+@Getter
 public class JourneeEntity {
     @Id
     private String reference;
@@ -27,13 +27,23 @@ public class JourneeEntity {
 
     private Double montant;
 
-    private Integer tdmTheorique;
-
-    @OneToMany(mappedBy = "journee")
-    private Set<TourneeEntity> tournees;
+    @OneToMany(mappedBy = "journee", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<TourneeEntity> tournees = new HashSet<>();
 
     @ManyToOne
     private EntrepotEntity entrepot;
+
+
+
+    public void addTournee(TourneeEntity tournee) {
+        tournees.add(tournee);
+        tournee.setJournee(this);
+    }
+
+    public void removeTournee(TourneeEntity tournee) {
+        tournees.remove(tournee);
+        tournee.setJournee(null);
+    }
 
 
 }
