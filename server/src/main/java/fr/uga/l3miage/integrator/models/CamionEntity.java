@@ -2,9 +2,7 @@ package fr.uga.l3miage.integrator.models;
 
 
 import fr.uga.l3miage.integrator.DataType.GeoPosition;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -16,6 +14,8 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class CamionEntity {
     @Id
     private String immatriculation;
@@ -26,7 +26,7 @@ public class CamionEntity {
     @ManyToOne
     private EntrepotEntity entrepot;
 
-    @OneToMany(mappedBy = "camion")
-    private Set<TourneeEntity> tournees;
+//    @OneToMany(mappedBy = "camion")
+//    private Set<TourneeEntity> tournees;
 
 }

@@ -1,11 +1,9 @@
 package fr.uga.l3miage.integrator.models;
 
-
 import fr.uga.l3miage.integrator.enums.Emploi;
 import lombok.*;
 
 import javax.persistence.*;
-
 
 @Entity
 @Getter
@@ -31,9 +29,11 @@ public class EmployeEntity {
     @Enumerated(EnumType.STRING)
     private Emploi emploi;
 
-//    @ManyToMany
-//    private Set<TourneeEntity> tournees;
-//
-//    @OneToOne
-//    private EntrepotEntity entrepot;
+    @ManyToOne
+    @JoinColumn(name = "tournee_id")
+    private TourneeEntity tournee;
+
+    @ManyToOne
+    @JoinColumn(name = "entrepot_id")
+    private EntrepotEntity entrepot;
 }

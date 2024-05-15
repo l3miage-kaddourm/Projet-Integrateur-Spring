@@ -2,7 +2,7 @@ package fr.uga.l3miage.integrator.components;
 
 
 import fr.uga.l3miage.integrator.enums.Emploi;
-import fr.uga.l3miage.integrator.exceptions.technical.NotFoundLivreursException;
+import fr.uga.l3miage.integrator.exceptions.technical.NotFoundEmployeException;
 import fr.uga.l3miage.integrator.models.EmployeEntity;
 import fr.uga.l3miage.integrator.repositories.EmployeRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,11 +17,18 @@ public class EmployeComponent {
     private final EmployeRepository employeRepository;
 
 
-    public Set<EmployeEntity> finAllLivreurs() throws NotFoundLivreursException {
+    public Set<EmployeEntity> findAllLivreurs() throws NotFoundEmployeException {
 
         Set<EmployeEntity> livreurs=employeRepository.findAllByEmploi(Emploi.livreur);
         if(livreurs.isEmpty())
-            throw new NotFoundLivreursException("Aucun Livreur Trouvé");
+            throw new NotFoundEmployeException("Aucun Livreur Trouvé");
         return livreurs;
+    }
+
+    public Set<EmployeEntity> getPlanificateurs() throws NotFoundEmployeException{
+        Set<EmployeEntity> planificateurs=employeRepository.findAllByEmploi(Emploi.planificateur);
+        if(planificateurs.isEmpty())
+            throw new NotFoundEmployeException("Aucun Planificateur Trouvé");
+        return planificateurs;
     }
 }
